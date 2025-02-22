@@ -1,7 +1,8 @@
 <image>
 	<profiles>
 		<profile name="Phosh-Desktop" description="Phosh Desktop">
-			<requires profile="DesktopCommon"/>
+			<requires profile="BaseCommon"/>
+			<requires profile="HardwareCommon"/>
 		</profile>
 	</profiles>
 	<packages type="bootstrap" patternType="plusRecommended" profiles="Phosh-Desktop">
