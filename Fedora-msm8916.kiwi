@@ -19,6 +19,7 @@
 
 	<include from="this://./components/common.xml"/>
 	<include from="this://./components/boot.xml"/>
+	<include from="this://./components/desktops/common.xml"/>
 	<include from="this://./components/desktops/phosh.xml"/>
 
 	<include from="this://./teams/msm8916.xml"/>
