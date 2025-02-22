@@ -19,4 +19,7 @@
 	<packages type="image" patternType="plusRecommended" profiles="MSM8916-Live">
 		<package name="anaconda-webui"/>
 	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="MSM8916">
+		<package name="bootmac"/>
+	</packages>
 </image>
