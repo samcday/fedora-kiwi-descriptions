@@ -5,7 +5,6 @@
 		</profile>
 	</profiles>
 	<packages type="bootstrap" patternType="plusRecommended" profiles="Phosh-Desktop">
-		<package name="fedora-release-phosh"/>
 	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="Phosh-Desktop">
 		<!-- install env-group to resolve RhBug:1891500 -->
