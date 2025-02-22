@@ -1,5 +1,5 @@
 <image>
-	<repository type="rpm-md" alias="msm8916" sourcetype="metalink">
+	<repository type="rpm-md" alias="msm8916" sourcetype="baseurl" priority="98">
 		<source path="https://download.copr.fedorainfracloud.org/results/samcday/msm8916/fedora-$releasever-$basearch/">
 			<signing key="https://download.copr.fedorainfracloud.org/results/samcday/msm8916/pubkey.gpg"/>
 		</source>
