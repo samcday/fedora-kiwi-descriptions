@@ -1,7 +1,7 @@
 <image>
-	<repository type="rpm-md" alias="msm8916" sourcetype="metalink">
-		<source path="https://download.copr.fedorainfracloud.org/results/samcday/msm8916/fedora-$releasever-$basearch/">
-			<signing key="https://download.copr.fedorainfracloud.org/results/samcday/msm8916/pubkey.gpg"/>
+	<repository type="rpm-md" alias="rawhide" sourcetype="metalink">
+		<source path="https://mirrors.fedoraproject.org/metalink?repo=rawhide&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/fedora/RPM-GPG-KEY-fedora-rawhide-primary"/>
 		</source>
 	</repository>
 </image>
