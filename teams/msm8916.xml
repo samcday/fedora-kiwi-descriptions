@@ -1,25 +1,16 @@
 <image>
 	<profiles>
 		<profile name="MSM8916" description="MSM8916 Spin">
-	</profile>
-		<profile name="MSM8916-Live" description="MSM8916 Edition Live Image">
-			<requires profile="MSM8916"/>
-			<requires profile="Phosh-Desktop"/>
-			<requires profile="LiveInstall"/>
 		</profile>
 		<profile name="MSM8916-Disk" description="MSM8916 Edition Install Disk">
 			<requires profile="MSM8916"/>
-			<requires profile="Phosh-Desktop"/>
 			<requires profile="BootDiskCore"/>
 		</profile>
 	</profiles>
-	<packages type="bootstrap" patternType="plusRecommended" profiles="MSM8916-Live,MSM8916-Disk">
+	<packages type="bootstrap" profiles="MSM8916-Live,MSM8916-Disk">
 		<package name="fedora-release-mobility"/>
 	</packages>
-	<packages type="image" patternType="plusRecommended" profiles="MSM8916-Live">
-		<package name="anaconda-webui"/>
-	</packages>
-	<packages type="image" patternType="plusRecommended" profiles="MSM8916">
+	<packages type="image" profiles="MSM8916">
 		<package name="bootmac"/>
 	</packages>
 </image>
