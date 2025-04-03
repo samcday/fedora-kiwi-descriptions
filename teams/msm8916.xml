@@ -7,7 +7,7 @@
 			<requires profile="BootDiskCore"/>
 		</profile>
 	</profiles>
-	<packages type="bootstrap" profiles="MSM8916-Live,MSM8916-Disk">
+	<packages type="bootstrap" profiles="MSM8916-Disk">
 		<package name="fedora-release-mobility"/>
 	</packages>
 	<packages type="image" profiles="MSM8916">
