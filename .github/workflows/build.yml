@@ -1,0 +1,23 @@
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install kiwi
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          sudo apt-get install -y kiwi
+      - name: Build image
+        run: |
+          sudo ./kiwi-build --kiwi-file=Fedora-msm8916.kiwi --image-type=oem --image-profile=MSM8916-Disk --output-dir ./outdir
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fedora-Remix-Mobility-SDM845-OnePlus
+          path: ./outdir-build/Fedora-Remix-Mobility.tar.xz
+          compression-level: 0
