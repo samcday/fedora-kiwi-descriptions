@@ -1,14 +1,18 @@
 <image>
 	<profiles>
+		<profile name="SDM845" description="SDM845">
+		</profile>
 		<profile name="SDM845-Disk" description="SDM845 Spin Install Disk">
 			<requires profile="BootDiskCore"/>
-			<requires profile="Phosh-Desktop"/>
+			<requires profile="SDM845"/>
 		</profile>
 	</profiles>
-	<packages type="bootstrap" patternType="plusRecommended" profiles="SDM845-Disk">
+	<packages type="bootstrap" patternType="plusRecommended" profiles="SDM845">
 		<package name="fedora-release-mobility"/>
 	</packages>
-	<packages type="bootstrap" profiles="SDM845-Disk">
+	<packages type="image" profiles="SDM845">
+		<namedCollection name="phosh-desktop"/>
+
 		<!-- Hardware support packages -->
 		<package name="bootmac"/>
 		<package name="hexagonrpc"/>
