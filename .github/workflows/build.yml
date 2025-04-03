@@ -8,13 +8,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Install kiwi
-        run: |
-          export DEBIAN_FRONTEND=noninteractive
-          sudo apt-get install -y jing kiwi
       - name: Build image
         run: |
-          sudo ./kiwi-build --kiwi-file=Fedora-msm8916.kiwi --image-type=oem --image-profile=MSM8916-Disk --output-dir ./outdir
+          podman run --privileged --rm -it -v /dev:/dev -v $PWD:/code -w /code registry.fedoraproject.org/fedora:rawhide bash - <<HERE
+          dnf install -y kiwi-cli
+          cd /code
+           ./kiwi-build --kiwi-file=Fedora-msm8916.kiwi --image-type=oem --image-profile=MSM8916-Disk --output-dir ./outdir
+          HERE
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
