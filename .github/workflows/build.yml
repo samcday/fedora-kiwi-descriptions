@@ -8,13 +8,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install kiwi
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          curl https://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder/xUbuntu_24.04/Release.key \
+            | sudo gpg --dearmor -o /etc/apt/keyrings/kiwi.gpg
+          echo 'deb [signed-by=/etc/apt/keyrings/kiwi.gpg] https://download.opensuse.org/repositories/Virtualization:/Appliances:/Builder/xUbuntu_24.04/ ./' \
+            | sudo tee /etc/apt/sources.list
+          sudo apt-get update
+          sudo apt-get install -y python3-kiwi dnf
+          kiwi --version
+
+      # Should be able to remove this when Ubuntu 25.04+ is available
+      # as the distribution-gpg-keys package is available
+      - name: Setup Fedora keys
+        run: |
+          git clone --depth 1 https://github.com/rpm-software-management/distribution-gpg-keys
+          sudo mkdir /usr/share/distribution-gpg-keys/
+          sudo cp -R distribution-gpg-keys/keys/fedora /usr/share/distribution-gpg-keys/
+
       - name: Build image
         run: |
-          podman run --privileged --rm -it -v /dev:/dev -v $PWD:/code -w /code registry.fedoraproject.org/fedora:rawhide bash - <<HERE
-          dnf install -y kiwi-cli
-          cd /code
-           ./kiwi-build --kiwi-file=Fedora-msm8916.kiwi --image-type=oem --image-profile=MSM8916-Disk --output-dir ./outdir
-          HERE
+          sudo ./kiwi-build --kiwi-file=Fedora-msm8916.kiwi --image-type=oem --image-profile=MSM8916-Disk --output-dir ./outdir
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
